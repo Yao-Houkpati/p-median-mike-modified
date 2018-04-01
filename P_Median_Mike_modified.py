@@ -16,11 +16,8 @@ dict(zip(location, [17.4, 11.6, 0, 8, 18.3, 16.8])),
 dict(zip(location, [21.8, 19.6, 8, 0, 16.9, 20.1])),
 dict(zip(location, [19.4, 21.7, 18.3, 16.9, 0, 13.6])),
 dict(zip(location, [11.4, 13, 16.8, 20.1, 13.6, 0]))]))
-print D
 
-
-
-p = 1  #  number of locations to optimize to
+p = 3  #  number of locations to optimize to
 
 # decision variables
 # This is same as X = LpVariable.dicts('X_%s_%s', (location), cat = 'Binary', lowBound = 0, upBound = 1)
@@ -32,7 +29,6 @@ X = LpVariable.dicts('X',(location),0,1, LpInteger)
 # declare distance variables
 Y = LpVariable.dicts('Y', (demand,location),0,1,LpInteger) 
 
-print X
 
 # create the LP object, set up as a MINIMIZATION problem
 prob = LpProblem('P Median', LpMinimize)
